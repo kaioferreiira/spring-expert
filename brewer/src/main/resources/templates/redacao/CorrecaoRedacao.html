@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="'layout/LayoutPadrao'"
+	>
+<head></head>
+
+<body>
+
+<!-- Essa é a section que sera inserida no conteudo da aplicação -->
+<section layout:fragment="conteudo">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<h1>
+				Correção de Redação
+			</h1>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+			<!-- <div class="alert  alert-danger  alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<i class="fa  fa-exclamation-circle"></i> Já existe um produto com o nome informado.
+			</div> -->
+
+		<div th:each="erro : ${#fields.detailedErrors('${redacao.*}')}">
+			<span th:text="${erro.message}"></span>
+		</div>
+
+		<form method="POST" th:object="${redacao}" class="form-vertical  js-form-loading">
+	
+			<span th:text="${mensagem}">Vai jogar a mensagem aqui pelo elemento mensagem</span>
+			<br>
+			
+			<div class="row">
+				<div class="col-sm-10  form-group">
+					<label for="descricao">Descrição</label>
+					<input type="text" id="descricao" th:field="*{descricao}">
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-2  form-group">
+					<label for="competencia1">Competencia 1</label>
+					<select id="competencia1" class="form-control" th:field="*{competencia1}">
+						<option value="">Selecione a nota</option>
+						<option th:each="competencia1 : ${competencia1}" th:value="${competencia1}" th:text="${competencia1.nota}" >entra aqui as competencias 1</option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-2  form-group">
+					<label for="competencia2">Competencia 2</label>
+					<select id="competencia2" class="form-control" th:field="*{competencia2}">
+						<option value="">Selecione a nota</option>
+						<option th:each="competencia2 : ${competencia2}" th:value="${competencia2}" th:text="${competencia2.nota}" >entra aqui as competencias 2</option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-2  form-group">
+					<label for="competencia3">Competencia 3</label>
+					<select id="competencia3" class="form-control" th:field="*{competencia3}">
+						<option value="">Selecione a nota</option>
+						<option th:each="competencia3 : ${competencia3}" th:value="${competencia3}" th:text="${competencia3.nota}" >entra aqui as competencias 3</option>
+					</select>
+				</div>
+			</div>
+			
+				<div class="row">
+				<div class="col-sm-2  form-group">
+					<label for="competencia4">Competencia 4</label>
+					<select id="competencia4" class="form-control" th:field="*{competencia4}">
+						<option value="">Selecione a nota</option>
+						<option th:each="competencia4 : ${competencia4}" th:value="${competencia4}" th:text="${competencia4.nota}" >entra aqui as competencias 4</option>
+					</select>
+				</div>
+			</div>
+			
+			
+			<div class="row">
+				<div class="col-sm-2  form-group">
+					<label for="competencia5">Competencia 5</label>
+					<select id="competencia5" class="form-control" th:field="*{competencia5}">
+						<option value="">Selecione a nota</option>
+						<option th:each="competencia5 : ${competencia5}" th:value="${competencia5}" th:text="${competencia5.nota}" >entra aqui as competencias 5</option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-2  form-group">
+					<label for="situacao">Situação</label>
+					<select id="situacao" class="form-control" th:field="*{situacao}">
+						<option value="">Selecione a situação </option>
+						<option th:each="situacao : ${situacao}" th:value="${situacao}" th:text="${situacao.situacao}" >entra aqui as situação do enum </option>
+					</select>
+				</div>
+			</div>
+			
+			
+			<div class="form-group">
+				<button class="btn  btn-primary" type="submit">Salvar</button>
+			</div>
+			
+		</form>
+
+	</div>
+</section>
+
+</body>
+</html>
